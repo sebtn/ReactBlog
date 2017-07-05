@@ -4,15 +4,16 @@ import PropTypes from 'prop-types'
 import {hashHistory, Route, Router, IndexRoute } from 'react-router'
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware, compose} from 'redux'
+import ReduxPromise from 'redux-promise'
 
-// import ReduxPromise from 'redux-promise'
+
 import firebase from './../firebase/index'
 import reducers from './reducers'
 import router from './router/index'
 import  '././styles/app.scss' 
 import BlogApp from './components/BlogApp'
 
-const createStoreMiddleware =applyMiddleware()(createStore)
+const createStoreMiddleware =applyMiddleware(ReduxPromise)(createStore)
 const devExtension = compose(window.devToolsExtension ? window.devToolsExtension() : f => f )
 
 'use strict'
