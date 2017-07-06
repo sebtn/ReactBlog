@@ -9,31 +9,31 @@ import {createPost} from '../actions/index'
 
 class PostsNew extends Component {
   render() {
-    const { handleSubmit } = this.props      
+    const { handleSubmit, pristine, reset, submitting } = this.props      
     return (
-      <form onSubmit={handleSubmit(createPost) }>
-        <div>
+      <form onSubmit={ handleSubmit(createPost) }>
+        <div className="col-lg-12">
           <label htmlFor="title">title</label>
           <Field
             name="title"                  
             component={renderInput}           
             type="text"/>                     
         </div>
-        <div>
+        <div className="col-lg-12">
           <label htmlFor="categories">categories</label>
           <Field
             name="categories"                   
             component={renderInput}           
             type="text"/>                 
         </div>
-        <div>
+        <div className="col-lg-12">
           <label htmlFor="content">content</label>
           <Field
             name="content"                   
             component={renderTextArea}          
             type="text"/>                
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
       </form>
     )
   }
@@ -41,28 +41,67 @@ class PostsNew extends Component {
 
 /*---------------------------------------------------------------------*/
 // Define stateless component to render input and errors
-  const renderInput = ( field ) =>  {
-    return (
-      <div>
-        <input {...field.input} type={field.type} />  
-        { field.meta.touched &&
-          field.meta.error &&
-          <span className="error">{field.meta.error}</span> }
-      </div>
-    )    
-  }  
-  const renderTextArea = ( field ) =>  {
-    return (
-      <div>
-        <textarea {...field.input} type={field.type} rows="5"/>  
-        { field.meta.touched &&
-          field.meta.error &&
-          <span className="error">{field.meta.error}</span> }
-      </div>
-    )    
-  } 
+  const renderInput  = ({
+  input,
+  label,
+  type,
+  meta: { touched, error, warning }
+}) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+      { touched &&
+        ((error && <span>{error}</span>) ||
+        (warning && <span>{warning}</span>)) }
+    </div>
+  </div>
+)
+
+const renderTextArea = ({
+input,
+label,
+type,
+meta: { touched, error, warning }
+}) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <textarea {...input} placeholder={label} type={type} />
+      { touched &&
+        ((error && <span>{error}</span>) ||
+        (warning && <span>{warning}</span>)) }
+    </div>
+  </div>
+)    
+
+/*---------------------------------------------------------------------*/
+  const validate = values => {
+    const errors = {}
+    if (!values.title) {
+      errors.title = 'Required title'
+    }  
+    if (!values.categories) { 
+      errors.categories = 'Required categories' 
+    }     
+    if (!values.content) { 
+      errors.content = 'Required content' 
+    } 
+    return errors
+  }
+
+/*---------------------------------------------------------------------*/
+  const warn = values => {
+    const warnings = {}
+    // if (!values.categories) {
+    //   warnings.categories = 'Hmm, you seem a bit young...'
+    // }
+    // return warnings
+  }
+
   
 /*---------------------------------------------------------------------*/
 export default reduxForm({
-  form: 'PostsNew'
+  form: 'PostsNew',
+  validate
 }, null, {createPost} )(PostsNew)
