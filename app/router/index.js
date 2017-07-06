@@ -11,8 +11,8 @@ export default (
   <Router history={hashHistory} > 
     <Route path='/' >
       <IndexRoute component={BlogApp} />
-      <Route path="/posts" component={PostsIndex} />
-      <Route path="/posts/new" component={PostsNew} />
+        <Route path="/posts" component={PostsIndex} />
+        <Route path="/posts/new" component={PostsNew} />
     </Route>
   </Router>
 )

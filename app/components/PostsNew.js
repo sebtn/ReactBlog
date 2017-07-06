@@ -4,49 +4,49 @@ import {Field, reduxForm} from 'redux-form'
 import {createPost} from '../actions/index'
 
 
+
+/*----------------------------------------------------------*/
+
 class PostsNew extends Component {
-  render () {
-    const { fields: {title, categories, content}, handleSubmit } = this.props  
-    
+  render() {
+
+    const { handleSubmit } = this.props       // No fields prop
+
     return (
-      <form onSubmit={ handleSubmit(this.props.createPost) }>
-      <h3>Create a new post</h3>
-        <div className="form-group">
-          <label >title</label>
-            <input 
-              type="text" 
-              className="form-control" 
-              {...title} />
+      <form onSubmit={handleSubmit}>
+
+        <div>
+          <label htmlFor="username">Username</label>
+          <Field
+            name="username"                   // Specify field name
+            component={renderInput}           // Specify render component above
+            type="text"/>                     // "type" prop passed to renderInput
         </div>
-        <div className="form-group">
-          <label >categories</label>
-            <input 
-              type="text" 
-              className="form-control" 
-              {...categories} />
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <Field
+            name="password"                   // Specify field name
+            component={renderInput}           // Reuse same render component
+            type="password"/>                 // "type" prop passed to renderInput
         </div>
-        <div className="form-group">
-          <label >content</label>
-            <textarea 
-              type="text" 
-              className="form-control" 
-              rows="5"  
-              {...content } />
-        </div>  
-          <button 
-            type="submit" 
-            className="btn btn-primary">
-            Submit
-        </button>
+
+        <button type="submit">Submit</button>
       </form>
     )
   }
 }
-/*Connect = mapStatetoProps, mapDispatchToPops */
-/*redux form uses config as first arg*/
-PostsNew = reduxForm({
-  form: 'PostsNewForm',
-  fields: ['title', 'categories', 'content']
-}, null, {createPost} )(PostsNew)
-
-export default PostsNew
+// Define stateless component to render input and errors
+  const renderInput = field =>  {
+    return (
+      <div>
+        <input {...field.input} type={field.type} />  
+        {field.meta.touched &&
+         field.meta.error &&
+         <span className="error">{field.meta.error}</span>}
+      </div>
+    )    
+  } 
+export default reduxForm({
+  form: 'PostsNew'
+})(PostsNew)
