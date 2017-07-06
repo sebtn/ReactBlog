@@ -9,44 +9,60 @@ import {createPost} from '../actions/index'
 
 class PostsNew extends Component {
   render() {
-
-    const { handleSubmit } = this.props       // No fields prop
-
+    const { handleSubmit } = this.props      
     return (
-      <form onSubmit={handleSubmit}>
-
+      <form onSubmit={handleSubmit(createPost) }>
         <div>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="title">title</label>
           <Field
-            name="username"                   // Specify field name
-            component={renderInput}           // Specify render component above
-            type="text"/>                     // "type" prop passed to renderInput
+            name="title"                  
+            component={renderInput}           
+            type="text"/>                     
         </div>
-
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="categories">categories</label>
           <Field
-            name="password"                   // Specify field name
-            component={renderInput}           // Reuse same render component
-            type="password"/>                 // "type" prop passed to renderInput
+            name="categories"                   
+            component={renderInput}           
+            type="text"/>                 
         </div>
-
-        <button type="submit">Submit</button>
+        <div>
+          <label htmlFor="content">content</label>
+          <Field
+            name="content"                   
+            component={renderTextArea}          
+            type="text"/>                
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     )
   }
 }
+
+/*---------------------------------------------------------------------*/
 // Define stateless component to render input and errors
-  const renderInput = field =>  {
+  const renderInput = ( field ) =>  {
     return (
       <div>
         <input {...field.input} type={field.type} />  
-        {field.meta.touched &&
-         field.meta.error &&
-         <span className="error">{field.meta.error}</span>}
+        { field.meta.touched &&
+          field.meta.error &&
+          <span className="error">{field.meta.error}</span> }
+      </div>
+    )    
+  }  
+  const renderTextArea = ( field ) =>  {
+    return (
+      <div>
+        <textarea {...field.input} type={field.type} rows="5"/>  
+        { field.meta.touched &&
+          field.meta.error &&
+          <span className="error">{field.meta.error}</span> }
       </div>
     )    
   } 
+  
+/*---------------------------------------------------------------------*/
 export default reduxForm({
   form: 'PostsNew'
-})(PostsNew)
+}, null, {createPost} )(PostsNew)
