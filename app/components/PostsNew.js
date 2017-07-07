@@ -11,37 +11,40 @@ class PostsNew extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props      
     return (
-      <form onSubmit={ handleSubmit(createPost) }>
-        <div className="col-lg-12">
-          <label htmlFor="title">title</label>
-          <Field
-            name="title"                  
-            component={renderInput}           
-            type="text"/>                     
-        </div>
-        <div className="col-lg-12">
-          <label htmlFor="categories">categories</label>
-          <Field
-            name="categories"                   
-            component={renderInput}           
-            type="text"/>                 
-        </div>
-        <div className="col-lg-12">
-          <label htmlFor="content">content</label>
-          <Field
-            name="content"                   
-            component={renderTextArea}          
-            type="text"/>                
-        </div>
-        <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
-      </form>
+      <div className="form-container">
+        <form onSubmit={ handleSubmit(createPost) }>
+          <div >
+            <label htmlFor="title">title</label>
+            <Field
+              name="title"                  
+              component={renderInput}           
+              type="text"/>                     
+          </div>
+          <div>
+            <label htmlFor="categories">categories</label>
+            <Field
+              name="categories"                   
+              component={renderInput}           
+              type="text"/>                 
+          </div>
+          <div >
+            <label htmlFor="content">content</label>
+            <Field
+              name="content"                   
+              component={renderTextArea}          
+              type="text"/>                
+          </div>
+          <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
+        </form>
+      </div>
     )
   }
 }
 
 /*---------------------------------------------------------------------*/
 // Define stateless component to render input and errors
-  const renderInput  = ({
+
+const renderInput  = ({
   input,
   label,
   type,
@@ -50,28 +53,36 @@ class PostsNew extends Component {
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} placeholder={label} type={type} />
       { touched &&
-        ((error && <span>{error}</span>) ||
+        (( error &&      
+          <div className="alert alert-warning" role="alert">
+            <strong><span>{error}</span></strong> Better check yourself, you're not looking too good.
+          </div> 
+     )  ||
         (warning && <span>{warning}</span>)) }
     </div>
+    <input {...input} placeholder={label} type={type} />
   </div>
 )
 
 const renderTextArea = ({
-input,
-label,
-type,
-meta: { touched, error, warning }
+  input,
+  label,
+  type,
+  meta: { touched, error, warning }
 }) => (
   <div>
     <label>{label}</label>
     <div>
-      <textarea {...input} placeholder={label} type={type} />
       { touched &&
-        ((error && <span>{error}</span>) ||
-        (warning && <span>{warning}</span>)) }
+        ((error &&  
+          <div className="alert alert-warning" role="alert">
+            <strong><span>{error}</span></strong> Better check yourself, you're not looking too good.
+          </div> 
+        ) ||
+        (warning && <span>{warning}</span>) ) }
     </div>
+    <textarea {...input} placeholder={label} type={type}  rows= '7' />
   </div>
 )    
 
@@ -79,8 +90,8 @@ meta: { touched, error, warning }
   const validate = values => {
     const errors = {}
     if (!values.title) {
-      errors.title = 'Required title'
-    }  
+      errors.title = 'Required Title'
+    }
     if (!values.categories) { 
       errors.categories = 'Required categories' 
     }     
@@ -91,17 +102,7 @@ meta: { touched, error, warning }
   }
 
 /*---------------------------------------------------------------------*/
-  const warn = values => {
-    const warnings = {}
-    // if (!values.categories) {
-    //   warnings.categories = 'Hmm, you seem a bit young...'
-    // }
-    // return warnings
-  }
-
-  
-/*---------------------------------------------------------------------*/
 export default reduxForm({
   form: 'PostsNew',
-  validate
+  validate,
 }, null, {createPost} )(PostsNew)
