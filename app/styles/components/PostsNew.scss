@@ -3,9 +3,8 @@
   display: block;
   align-content: center;
   border: 1px solid $box-shadow-border;
-  margin: 3.5rem;
-  padding: 1rem;
-
+  margin: 1rem 3.5rem;
+  padding: 1.5rem 5rem;
   & input {
     width: 100%;
     margin: 0.25rem 0;
@@ -26,6 +25,7 @@
         border-bottom: 1px solid $placeholder-letter;
       }
   }
+  
   & textarea {
       width: 100%;
       margin: 0.25rem 0;
@@ -34,7 +34,7 @@
       -moz-box-shadow: 0 4px 6px -6px $box-shadow-border;
       box-shadow: 0 4px 6px -6px $box-shadow-border;
       border: 0;
-      border: 1px solid $placeholder-letter;
+      border: 1px solid $placeholder-letter-clear;
       min-height: 2.75rem;
       font-size: 1.5rem;
         & focus {
@@ -43,13 +43,19 @@
           -moz-box-shadow: 0 4px 6px -6px $box-shadow-border;
           box-shadow: 0 4px 6px -6px $box-shadow-border;
           border: 0;
-          border-bottom: 1px solid $placeholder-letter;
+          border-bottom: 1px solid $placeholder-letter-clear;
         }
     }
     & label {
       margin-top: 2.25rem;
+      font-size: 1.5rem;
+      color: $grey;
     }
+    & button {
+      margin: 0 1rem;
+    }
+}
 
-
-
+h1 {
+text-align: center;
 }
