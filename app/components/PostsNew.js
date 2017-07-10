@@ -1,22 +1,30 @@
 import React, {Component} from 'react'
 import  PropTypes from 'prop-types'
 import {Field, reduxForm} from 'redux-form'
-import {Link} from 'react-router'
+import {Link, hashHistory} from 'react-router'
 
 import {createPost} from '../actions/index'
 
 
 
-/*----------------------------------------------------------*/
 class PostsNew extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+/*----------------------------------------------------------*/
+  onSubmitRedirect = (props) => {
+    createPost(props)
+    hashHistory.push('/')
+  }
+/*----------------------------------------------------------*/
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props      
+    const { handleSubmit, pristine, reset, submitting, onSubmit } = this.props      
     return (
       <div>
         <h1>Add a blog post</h1>
         <div className="form-container">
-          <form onSubmit={ handleSubmit(createPost) }>
+          <form onSubmit={ handleSubmit(this.onSubmitRedirect) } >
             <div >
               <label>Title</label>
               <Field

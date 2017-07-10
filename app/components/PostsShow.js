@@ -14,28 +14,28 @@ class PostShow extends Component {
   renderOnePost = () => {
       let {post} = this.props
       if (!post) {
-        return (<div>Loading...</div>)
+        return (<h2>Loading...</h2>)
       }
       return (
         <div>    
           <h3 > This posts belongs to</h3>
-          <div>
-          <span>{this.props.post.id}</span> 
-          </div>
+            <div>
+              <span>{this.props.post.id}</span> 
+            </div>
           <span>
-          <div>
-          {this.props.post.title}
-          </div>
+            <div>
+              {this.props.post.title}
+            </div>
           </span>
           <span>
-          <div>
-          {this.props.post.categories}
-          </div>
+            <div>
+              {this.props.post.categories}
+            </div>
           </span>
           <span>
-          <div>
-          {this.props.post.content}
-          </div>
+            <div>
+              {this.props.post.content}
+            </div>
           </span>
         </div>
     )  
