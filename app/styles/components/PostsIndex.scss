@@ -1,0 +1,44 @@
+.Main-Container {
+  vertical-align: middle;
+  & .Post-list {
+    text-align: center;
+    margin: 1.25rem;
+  }
+  & .add-post-button {
+    border-radius: 0;
+    font-weight: bold;
+    margin: 1.25rem;
+  }
+  & .post-row {
+    display: flex;
+    vertical-align: middle;
+    min-height: 5rem;
+  }
+  & .button-wrapper {
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 0.3 rem;
+    & .button-post {
+      vertical-align: middle;
+    }
+  }
+  & ul {
+    list-style-type:none; 
+    vertical-align: middle;
+    margin-top: 2rem;
+    & li {
+      width: 100%;
+      vertical-align: middle;
+      margin-top: 1rem;
+      border-top:1px solid $placeholder-letter;
+    }
+  }
+  & span {
+    vertical-align: middle;
+    margin: .3rem .3rem;
+    display:block;
+  }
+}

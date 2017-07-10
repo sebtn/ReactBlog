@@ -18,12 +18,19 @@ class PostsIndex extends Component {
     return posts.map( (post) => {
       return (
         <li className="list-group-item" key={post.id}>
-          <strong>{post.title}</strong>
-          <span className="push-right"><p> {post.categories} </p></span>
-          <Link to={'/posts/' + post.id} className="btn btn-link">
-            Go to post
-          </Link>
-        </li> 
+          <div className="row post-row">
+            <div className="col-md-8">
+              <span className="push-left">Id: {post.id}</span>
+              <span><strong>Title: {post.title}</strong></span>
+              <span className="push-right"><p> Categories: {post.categories} </p></span>
+            </div>
+            <div className="col-md-4 button-wrapper">
+              <Link to={'/posts/' + post.id} className="btn btn-outline-info button-post">
+                Go to post
+              </Link>
+            </div>
+        </div>
+      </li> 
       )
     })
   }  
@@ -32,13 +39,12 @@ class PostsIndex extends Component {
   render() {
     return (
       <div className="Main-Container">
-        <h1 className="title">See this? There is a list of post promised!</h1>
+        <h1 className="title">POSTS LIST</h1>
         <div className="text-center">
-          <Link to="/posts/new" className="btn btn-primary"> 
+          <Link to="/posts/new" className="btn btn-primary btn-lg add-post-button"> 
             Add a post
           </Link>         
         </div>
-        <h2 className="Post-list">Post list</h2>
         <ul className="list-group">
             {this.renderPosts()}
         </ul>
