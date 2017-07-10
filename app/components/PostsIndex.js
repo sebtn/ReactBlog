@@ -15,18 +15,16 @@ class PostsIndex extends Component {
 
 /*------------------------------------------------------*/
   renderPosts = () => {
-    return this.props.fetchPosts().then((response) => {
-      let p = response.payload.data 
-      let parsedTodos = []
-      Object.keys(p).forEach( (pId) => {
-        parsedTodos.push({
-          id: pId,
-          ...p[pId]
-        })
-      })
-      return (<p>{p.title}</p>)
+    let {posts} = this.props
+    // console.log(posts)
+    return posts.map( (post) => {
+      return (
+        <li className="list-group-item" key={post.id}>
+          {post.title}
+        </li> 
+      )
     })
-
+    // console.log('hi: -> ', this.props)
   }  
 
 /*------------------------------------------------------*/
@@ -41,7 +39,7 @@ class PostsIndex extends Component {
         </div>
         <h2 className="Post-list">Post list</h2>
         <ul className="list-group">
-          {this.renderPosts()}
+            {this.renderPosts()}
         </ul>
       </div>
     )
@@ -51,6 +49,8 @@ class PostsIndex extends Component {
 
 /*------------------------------------------------------*/
 function mapStateToProps(state) {
-  return { posts: state.posts.all }
+  return { 
+    posts: state.posts.all 
+  }
 }
 export default connect(mapStateToProps, { fetchPosts })(PostsIndex)
