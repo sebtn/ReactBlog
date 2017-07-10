@@ -1,5 +1,5 @@
 import React from 'react'
-import {FETCH_POSTS} from '../actions/index.js'
+import {FETCH_POSTS, FETCH_POST} from '../actions/index.js'
 
 const initialState = {
   all: [],
@@ -13,6 +13,8 @@ export let ReducerPosts = (state = initialState, action) => {
         ...state,
        all: action.payload.data
       }
+    case FETCH_POST:
+      return {...state, post: action.payload.data }      
     default:
       return state      
   }

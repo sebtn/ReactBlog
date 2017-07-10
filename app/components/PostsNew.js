@@ -43,7 +43,7 @@ class PostsNew extends Component {
                 type="text"
                 placeholder="Please start typing here..."/>                
             </div>
-            <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
+            <button type="submit" className="btn btn-primary" >Submit</button>
             <Link to="/posts" className="btn btn-link b1-button">Cancel</Link>
           </form>
         </div>

@@ -9,8 +9,7 @@ class PostsIndex extends Component {
 
 /*------------------------------------------------------*/
   componentWillMount() {
-    this.props.fetchPosts()
-    
+    this.props.fetchPosts()  
   }
 
 /*------------------------------------------------------*/
@@ -19,11 +18,11 @@ class PostsIndex extends Component {
     return posts.map( (post) => {
       return (
         <li className="list-group-item" key={post.id}>
-          <span className="push-right"> 
-            <strong>{post.title}</strong>
-          </span>
-            <p> {post.categories} </p>
-            <p> {post.id} </p>
+          <strong>{post.title}</strong>
+          <span className="push-right"><p> {post.categories} </p></span>
+          <Link to={'/posts/' + post.id} className="btn btn-link">
+            Go to post
+          </Link>
         </li> 
       )
     })
@@ -34,7 +33,7 @@ class PostsIndex extends Component {
     return (
       <div className="Main-Container">
         <h1 className="title">See this? There is a list of post promised!</h1>
-        <div className="text-xs-right">
+        <div className="text-center">
           <Link to="/posts/new" className="btn btn-primary"> 
             Add a post
           </Link>         
@@ -50,7 +49,7 @@ class PostsIndex extends Component {
 }
 
 /*------------------------------------------------------*/
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return { 
     posts: state.posts.all 
   }
