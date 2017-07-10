@@ -4,11 +4,15 @@
 │   │   └── index.js
 │   ├── app.js
 │   ├── components
-│   │   └── BlogApp.js
+│   │   ├── BlogApp.js
+│   │   ├── PostsIndex.js
+│   │   ├── PostsNew.js
+│   │   └── PostsShow.js
 │   ├── reducers
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── Reducer_post.js
 │   ├── router
-│   │   └── router.js
+│   │   └── index.js
 │   ├── store
 │   │   └── configureStore.js
 │   ├── styles
@@ -17,7 +21,10 @@
 │   │   │   ├── _core.scss
 │   │   │   └── _variables.scss
 │   │   └── components
-│   │       └── BlogApp.scss
+│   │       ├── BlogApp.scss
+│   │       ├── PostsIndex.scss
+│   │       ├── PostsNew.scss
+│   │       └── PostsShow.scss
 │   └── tests
 │       └── components
 │           └── test_index.js
@@ -35,4 +42,4 @@
 ├── server.js
 └── webpack.config.js
 
-14 directories, 21 files
+14 directories, 28 files
