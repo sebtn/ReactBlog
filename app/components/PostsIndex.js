@@ -16,22 +16,24 @@ class PostsIndex extends Component {
 /*------------------------------------------------------*/
   renderPosts = () => {
     let {posts} = this.props
-    // console.log(posts)
     return posts.map( (post) => {
       return (
         <li className="list-group-item" key={post.id}>
-          {post.title}
+          <span className="push-right"> 
+            <strong>{post.title}</strong>
+          </span>
+            <p> {post.categories} </p>
+            <p> {post.id} </p>
         </li> 
       )
     })
-    // console.log('hi: -> ', this.props)
   }  
 
 /*------------------------------------------------------*/
   render() {
     return (
       <div className="Main-Container">
-        <h1 className="title">See this? There is a list of post primised!</h1>
+        <h1 className="title">See this? There is a list of post promised!</h1>
         <div className="text-xs-right">
           <Link to="/posts/new" className="btn btn-primary"> 
             Add a post
