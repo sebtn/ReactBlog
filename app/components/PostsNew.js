@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import  PropTypes from 'prop-types'
 import {Field, reduxForm} from 'redux-form'
 import {Link} from 'react-router'
 
@@ -7,8 +8,8 @@ import {createPost} from '../actions/index'
 
 
 /*----------------------------------------------------------*/
-
 class PostsNew extends Component {
+
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props      
     return (
@@ -40,10 +41,10 @@ class PostsNew extends Component {
                 name="content"                   
                 component={renderTextArea}          
                 type="text"
-                placeholder="Start typing here"/>                
+                placeholder="Please start typing here..."/>                
             </div>
             <button type="submit" className="btn btn-primary" disabled={submitting}>Submit</button>
-            <Link to="/posts" className="btn btn-danger">Cancel</Link>
+            <Link to="/posts" className="btn btn-link b1-button">Cancel</Link>
           </form>
         </div>
       </div>
@@ -53,7 +54,6 @@ class PostsNew extends Component {
 
 /*---------------------------------------------------------------------*/
 // Define stateless component to render input and errors
-
 const renderInput  = ({
   placeholder,
   input,
@@ -62,17 +62,20 @@ const renderInput  = ({
   meta: { touched, error }
 }) => (
   <div>
-    <label>{label}</label>
     <div>
       { touched &&
         (( error &&      
-          <div className="alert alert-danger" role="alert">
-            <strong><span>{error}</span></strong> Better check yourself, you're not looking too good.
-          </div> 
+          <strong className="alert alert-danger" 
+            role="alert">
+            <span>{error}</span>
+          </strong> 
          ))
       }
     </div>
-    <input {...input} placeholder={placeholder} type={type} />
+    <label>{label}</label>
+    <input {...input} 
+      placeholder={placeholder} 
+      type={type} />
   </div>
 )
 
@@ -84,17 +87,21 @@ const renderTextArea = ({
   meta: { touched, error}
 }) => (
   <div>
-    <label>{label}</label>
     <div>
       { touched &&
         ((error &&  
-          <div className="alert alert-danger" role="alert">
-            <strong><span>{error}</span></strong> Better check yourself, you're not looking too good.
-          </div> 
+          <strong className="alert alert-danger" 
+            role="alert">
+            <span>{error}</span>
+          </strong> 
         ))
       }
     </div>
-    <textarea {...input} placeholder={placeholder} type={type}  rows= '7' />
+    <label>{label}</label>
+    <textarea {...input} 
+      placeholder={placeholder} 
+      type={type} 
+      rows= '10' />
   </div>
 )    
 
@@ -102,13 +109,13 @@ const renderTextArea = ({
   const validate = values => {
     const errors = {}
     if (!values.title) {
-      errors.title = 'Required title Field'
+      errors.title = 'Required'
     }
     if (!values.categories) { 
-      errors.categories = 'Required categories Field' 
+      errors.categories = 'Required' 
     }     
     if (!values.content) { 
-      errors.content = 'Required content Field' 
+      errors.content = 'Required' 
     } 
     return errors
   }

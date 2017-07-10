@@ -1,12 +1,30 @@
 .form-container {
-  text-align: center;
+  text-align: left;
   display: block;
   align-content: center;
-  border: 1px solid $box-shadow-border;
+  border: 1px solid $placeholder-letter-clear;
   margin: 1rem 3.5rem;
-  padding: 1.5rem 5rem;
+  padding: 1rem;
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: $placeholder-letter;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color: $placeholder-letter;
+       opacity:  1;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color: $placeholder-letter;
+       opacity:  1;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color: $placeholder-letter;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+       color: $placeholder-letter;
+    }
   & input {
-    width: 100%;
+    padding-left: 1rem;
+    width: 50%;
     margin: 0.25rem 0;
     outline: none;
     -webkit-box-shadow: 0 4px 6px -6px $box-shadow-border;
@@ -27,14 +45,15 @@
   }
   
   & textarea {
+      padding-left:1.5rem;
       width: 100%;
       margin: 0.25rem 0;
       outline: none;
-      -webkit-box-shadow: 0 4px 6px -6px $box-shadow-border;
-      -moz-box-shadow: 0 4px 6px -6px $box-shadow-border;
-      box-shadow: 0 4px 6px -6px $box-shadow-border;
+      -webkit-box-shadow: 0 4px 6px -4px $box-shadow-border;
+      -moz-box-shadow: 0 4px 6px -4px $box-shadow-border;
+      box-shadow: 0 4px 6px -4px $box-shadow-border;
       border: 0;
-      border: 1px solid $placeholder-letter-clear;
+      border-bottom: 1px solid $placeholder-letter;
       min-height: 2.75rem;
       font-size: 1.5rem;
         & focus {
@@ -43,7 +62,7 @@
           -moz-box-shadow: 0 4px 6px -6px $box-shadow-border;
           box-shadow: 0 4px 6px -6px $box-shadow-border;
           border: 0;
-          border-bottom: 1px solid $placeholder-letter-clear;
+          border-bottom: 1px solid $placeholder-letter;
         }
     }
     & label {
@@ -51,11 +70,15 @@
       font-size: 1.5rem;
       color: $grey;
     }
-    & button {
-      margin: 0 1rem;
+    & button, .b1-button  {
+      margin: 1rem 1.25rem 1rem 0;
+      font-weight: bold;
+      border-radius: 0;
     }
 }
 
 h1 {
-text-align: center;
+  color: $grey;
+  text-align: center;
+  margin: 2rem 0;
 }
