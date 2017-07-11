@@ -1,8 +1,11 @@
+div.post:hover {
+  background-color:#d1d1d1  !important;
+}
 .Main-Container {
-  vertical-align: middle;
   & .Post-list {
     text-align: center;
     margin: 1.25rem;
+    color: $gray;
   }
   & .add-post-button {
     border-radius: 0;
@@ -11,22 +14,21 @@
   }
   & .post-row {
     display: flex;
-    vertical-align: middle;
     min-height: 5rem;
   }
   & .button-wrapper {
     text-align: center;
     align-content: center;
     align-items: center;
-    vertical-align: middle;
     margin-top: 0.3 rem;
     & .button-post {
       border-radius: 0;
+      vertical-align: middle;
+      float: left;
     }
   }
   & ul {
     list-style-type:none; 
-    vertical-align: middle;
     margin-top: 2rem;
     & li {
       width: 80%;
@@ -34,9 +36,6 @@
       margin-top: 1rem;
       border-top:0px solid $placeholder-letter;
       /*background-color:#333  !important;*/
-    }
-    & hover {
-      background-color:#333  !important;
     }
   }
   & span {

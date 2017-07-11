@@ -15,44 +15,46 @@ class PostShow extends Component {
   renderOnePost = () => {
       let {post} = this.props
       if (!post) {
-        return (<h2>Loading...</h2>)
-      }
+        return (<h3>Loading...</h3>)
+      } else {
       return (
-        <div>    
+       <div className="main-box">   
           <h3 > This posts belongs to</h3>
             <div>
-              <span>{this.props.post.id}</span> 
+              <p>
+                <span>{this.props.post.id}</span> 
+              </p>
             </div>
           <span>
-            <div>
-              title:  <p>
+            <div><strong>
+              title: </strong> <p>
                {this.props.post.title}
               </p> 
             </div>
           </span>
           <span>
-            <div>
-             is about: <p>
+            <div><strong>
+             is about: </strong><p>
               {this.props.post.categories}
              </p> 
             </div>
           </span>
           <span>
-            <div>
-             the content:  <p>
+            <div><strong>
+             the content:  </strong><p>
               {this.props.post.content}
              </p> 
             </div>
           </span>
         </div>
-    )  
+      )  
+    }
   }
 
 /*------------------------------------------------------*/
 onClickDelete = () => {
   this.props.deletePost(this.props.params.id)
     .then((res)=> {
-      // console.log(res)
     hashHistory.push('/posts')
   }, (err) => {
     console.log(err)
@@ -64,7 +66,7 @@ onClickDelete = () => {
     return (
       <div className="single-post-container row">
           <div className="col-md-1"></div>
-          <div className="col-md-10">
+          <div className="col-md-10 halfman">
             {this.renderOnePost()}
             <Link to='/posts' className="btn btn-outline ">
               Go to all posts

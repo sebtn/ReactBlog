@@ -19,9 +19,9 @@ class PostsIndex extends Component {
       return (
         <li className="list-group-item" key={post.id}>
           <div className="row post-row">
-            <div className="col-md-8">
-              <span className="push-left">Id: {post.id}</span>
+            <div className="col-md-8 post">
               <span><strong>Title: {post.title}</strong></span>
+              <span className="push-left">Id: {post.id}</span>
               <span className="push-right"><p> Categories: {post.categories} </p></span>
             </div>
             <div className="col-md-4 button-wrapper">
