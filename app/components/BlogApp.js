@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import  PropTypes from 'prop-types'
 import * as Redux from 'react-redux'
+import {Link} from 'react-router'
 
 class BlogApp extends Component {
   render() {
@@ -9,7 +10,13 @@ class BlogApp extends Component {
         <div className="row">
         <div className="col-md-1"></div>
         <div className="col-md-10 ">
-          <h1 className="title">See this? this is redux and router</h1>
+          <h1 className="title">This is a main router compoenent</h1>
+          <Link to="/posts" className="btn btn-primary button-route">
+            Go to all posts
+          </Link>          
+          <Link to="/posts/new" className="btn btn-primary button-route">
+            Add new post
+          </Link>
         </div>
         <div className="col-md-1"></div>
         </div>

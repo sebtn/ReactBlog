@@ -25,7 +25,7 @@ class PostsIndex extends Component {
               <span className="push-right"><p> Categories: {post.categories} </p></span>
             </div>
             <div className="col-md-4 button-wrapper">
-              <Link to={'/posts/' + post.id} className="btn btn-outline-info button-post">
+              <Link to={'/posts/' + post.id} className="btn btn-outline-primary button-post">
                 Go to post
               </Link>
             </div>
@@ -37,6 +37,10 @@ class PostsIndex extends Component {
 
 /*------------------------------------------------------*/
   render() {
+    let {posts} = this.props
+    if (!posts)  {
+      return (<h3>Loading...</h3>)
+    }
     return (
       <div className="Main-Container">
         <h1 className="title">POSTS LIST</h1>

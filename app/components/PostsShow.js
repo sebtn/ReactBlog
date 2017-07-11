@@ -50,9 +50,13 @@ class PostShow extends Component {
 
 /*------------------------------------------------------*/
 onClickDelete = () => {
-  let {post} = this.props
   this.props.deletePost(this.props.params.id)
-  hashHistory.push('/')
+    .then((res)=> {
+      // console.log(res)
+    hashHistory.push('/posts')
+  }, (err) => {
+    console.log(err)
+  })
 }
 
 /*------------------------------------------------------*/
@@ -62,11 +66,12 @@ onClickDelete = () => {
           <div className="col-md-1"></div>
           <div className="col-md-10">
             {this.renderOnePost()}
-            <Link to='/posts' className="btn btn-outline route-button">
+            <Link to='/posts' className="btn btn-outline ">
               Go to all posts
             </Link>
-            <button className="btn btn-danger"
-              onClick={this.onClickDelete}>
+            <button className="btn btn-danger route-button"
+              onClick={this.onClickDelete}
+              type="submit">
               delete post
             </button>
           </div>

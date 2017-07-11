@@ -16,13 +16,12 @@
   }
   & .button-wrapper {
     text-align: center;
-    justify-content: center;
     align-content: center;
     align-items: center;
     vertical-align: middle;
     margin-top: 0.3 rem;
     & .button-post {
-      vertical-align: middle;
+      border-radius: 0;
     }
   }
   & ul {
@@ -30,10 +29,14 @@
     vertical-align: middle;
     margin-top: 2rem;
     & li {
-      width: 100%;
+      width: 80%;
       vertical-align: middle;
       margin-top: 1rem;
-      border-top:1px solid $placeholder-letter;
+      border-top:0px solid $placeholder-letter;
+      /*background-color:#333  !important;*/
+    }
+    & hover {
+      background-color:#333  !important;
     }
   }
   & span {
