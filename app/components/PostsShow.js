@@ -55,9 +55,9 @@ class PostShow extends Component {
 onClickDelete = () => {
   this.props.deletePost(this.props.params.id)
     .then((res)=> {
-    hashHistory.push('/posts')
-  }, (err) => {
-    console.log(err)
+      hashHistory.push('/posts')
+    }, (err) => {
+      console.log(err)
   })
 }
 

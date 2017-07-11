@@ -19,12 +19,12 @@ class PostsIndex extends Component {
       return (
         <li className="list-group-item" key={post.id}>
           <div className="row post-row">
-            <div className="col-md-8 post">
+            <div className="col-md-8 post col-md-offset-1">
               <span><strong>Title: {post.title}</strong></span>
               <span className="push-left">Id: {post.id}</span>
               <span className="push-right"><p> Categories: {post.categories} </p></span>
             </div>
-            <div className="col-md-4 button-wrapper">
+            <div className="col-md-3 button-wrapper">
               <Link to={'/posts/' + post.id} className="btn btn-outline-primary button-post">
                 Go to post
               </Link>

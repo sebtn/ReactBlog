@@ -5,7 +5,7 @@
   align-content: center;
   text-align: justify;
   color: $gray;
-  background-color: #f3f3f3;
+  background-color: $mv2-clear;
   & .route-button {
     float:right;
     border-radius: 0;
@@ -13,6 +13,7 @@
     margin: 1.25rem;
   }
   & .halfman {
-    background-color:#d2d2d2;
+    background-color:$mv-clear;
+    padding:8rem 2rem;
   }
 }
