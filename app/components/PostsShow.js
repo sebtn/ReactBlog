@@ -19,7 +19,7 @@ class PostShow extends Component {
       } else {
       return (
        <div className="main-box">   
-          <h3 > This posts belongs to</h3>
+          <h3 > This posts belongs to: </h3>
             <div>
               <p>
                 <span>{this.props.post.id}</span> 
@@ -64,11 +64,12 @@ onClickDelete = () => {
 /*------------------------------------------------------*/
   render() {
     return (
-      <div className="single-post-container row">
-          <div className="col-md-1"></div>
-          <div className="col-md-10 halfman">
+      <div className="single-post-container">
+        <div className="row">
+          <div className="col-md-1 col-lg-1"></div>
+          <div className="col-md-10 col-lg-10 halfman">
             {this.renderOnePost()}
-            <Link to='/posts' className="btn btn-outline ">
+            <Link to='/posts' className="btn btn-link btn-lg ">
               Go to all posts
             </Link>
             <button className="btn btn-danger route-button"
@@ -77,8 +78,9 @@ onClickDelete = () => {
               delete post
             </button>
           </div>
-          <div className="col-md-1"></div>
+          <div className="col-md-1 col-lg-1"></div>
       </div>
+    </div>
     )
   }
 }

@@ -1,4 +1,4 @@
-div.row:hover {
+div.post-row:hover {
   background-color:#d1d1d1  !important;
 }
 .Main-Container {
@@ -29,7 +29,7 @@ div.row:hover {
     list-style-type:none; 
     margin-top: 2.5rem;
     & li {
-      width: 50%;
+      width: 70%;
       margin-top: 1rem;
       border-top:0px solid $placeholder-letter;
       /*background-color:#333  !important;*/

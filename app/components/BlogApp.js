@@ -11,10 +11,10 @@ class BlogApp extends Component {
         <div className="col-md-1"></div>
         <div className="col-md-10 ">
           <h1 className="title">This is a main router compoenent</h1>
-          <Link to="/posts" className="btn btn-primary button-route">
+          <Link to="/posts" className="btn btn-link button-route">
             Go to all posts
           </Link>          
-          <Link to="/posts/new" className="btn btn-primary button-route">
+          <Link to="/posts/new" className="btn btn-link button-route">
             Add new post
           </Link>
         </div>

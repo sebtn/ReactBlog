@@ -21,9 +21,9 @@ class PostsNew extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting, onSubmit } = this.props      
     return (
-      <div>
-        <h1>Add a blog post</h1>
+      <div className="main-container">
         <div className="form-container">
+          <h1>Add a blog post</h1>
           <form onSubmit={ handleSubmit(this.onSubmitRedirect) } >
             <div >
               <label>Title</label>

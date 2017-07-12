@@ -1,6 +1,5 @@
 .single-post-container {
-  margin: 1rem 3.5rem;
-  padding: 1rem;
+  top:100%;
   display: flex;
   align-content: center;
   text-align: justify;
@@ -14,6 +13,11 @@
   }
   & .halfman {
     background-color:$mv-clear;
-    padding:8rem 2rem;
+    font-size: 1.25rem;
+    padding:15rem 5rem;
   }
+}
+
+.main-box {
+  padding:1rem;
 }

@@ -1,10 +1,14 @@
+.main-container {
+  /*background-color: $mv2-clear;*/
+  margin: 0;
+  padding:0;
+}
 .form-container {
+  background-color: #f6f6f6;
   text-align: left;
   display: block;
   align-content: center;
   border: 1px solid $placeholder-letter-clear;
-  margin: 1rem 3.5rem;
-  padding: 1rem;
   ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
         color: $placeholder-letter;
     }
@@ -27,6 +31,7 @@
     width: 50%;
     margin: 0.25rem 0;
     outline: none;
+    background-color: #f6f6f6;
     -webkit-box-shadow: 0 4px 6px -6px $box-shadow-border;
     -moz-box-shadow: 0 4px 6px -6px $box-shadow-border;
     box-shadow: 0 4px 6px -6px $box-shadow-border;
@@ -47,6 +52,7 @@
   & textarea {
       padding-left:1.5rem;
       width: 100%;
+      background-color: #f6f6f6;
       margin: 0.25rem 0;
       outline: none;
       -webkit-box-shadow: 0 4px 6px -4px $box-shadow-border;
@@ -67,11 +73,12 @@
     }
     & label {
       margin-top: 2.25rem;
+      padding-left: 2.25rem;
       font-size: 1.5rem;
       color: $grey;
     }
     & button, .b1-button  {
-      margin: 1rem 1.25rem 1rem 0;
+      margin: 1rem 1.25rem 1rem 2.25rem;
       font-weight: bold;
       border-radius: 0;
     }
